@@ -1,20 +1,24 @@
-// src/index.js
-import "./styles.css";
-import { greeting } from "./greeting.js";
-// import img from "./img.png";
-// const image = document.createElement("img");
-// image.src = img;
-// document.body.appendChild(image);
+import "./styles/styles.css";
+import { createTodo } from "./todoManager";
+import { createProject } from "./projectManager";
+import { format } from "date-fns";
+import ui from "./ui";
 
-const container = document.querySelector(".container");
+// Criar datas
+const date1 = format(new Date(2014, 1, 1), "dd-MM-yyyy");
+const date2 = format(new Date(2014, 2, 1), "dd-MM-yyyy");
+const date3 = format(new Date(2014, 3, 1), "dd-MM-yyyy");
 
-const item = document.createElement("div");
-item.className = "item";
-item.textContent = "Hello, World!";
-container.appendChild(item);
+// Criar todos
+const todo1 = createTodo("Planejar o mês", "", date1, "important");
+const todo2 = createTodo("Lavar a roupa", "", date2, "important");
+const todo3 = createTodo("Reunião com o cliente", "", date3, "important");
 
-console.log(greeting);
+// Criar projeto e adicionar todos
+const project = createProject("House");
+project.addTodo(todo1);
+project.addTodo(todo2);
+project.addTodo(todo3);
+project.removeTodo(todo1.id);
 
-import { Todo } from "./Todo.js";
-const todo = new Todo("Learn JavaScript", "Study the basics of JavaScript.");
-console.log(todo);
+console.log(project);
