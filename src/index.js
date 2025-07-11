@@ -1,6 +1,5 @@
 // src/index.js
-import "./styles.css";
-import { greeting } from "./greeting.js";
+import "./styles/styles.css";
 // import img from "./img.png";
 // const image = document.createElement("img");
 // image.src = img;
@@ -13,8 +12,16 @@ item.className = "item";
 item.textContent = "Hello, World!";
 container.appendChild(item);
 
-console.log(greeting);
 
 import { Todo } from "./Todo.js";
+import { Project } from "./Project.js";
+
 const todo = new Todo("Learn JavaScript", "Study the basics of JavaScript.");
+const project = new Project("Home");
+
+project.addTodo(todo)
+project.addTodo(todo)
+
+console.log(project);
+
 console.log(todo);
